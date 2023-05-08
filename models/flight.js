@@ -4,6 +4,15 @@ const Schema = mongoose.Schema;
 const airlineEnum = ['American', 'Southwest', 'United']
 const airportEnum = ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
 
+const destinationSchema = new Schema ({
+    airport: {
+        type: String,
+        enum: airportEnum,
+    },
+    arrival: {
+        type: Date
+    } 
+})
 
 const flightSchema = new Schema({
     airline: {
@@ -31,6 +40,7 @@ const flightSchema = new Schema({
             return oneYearFromNow;
           }
         },
+    destinations: [destinationSchema]
 }, {
     timestamps: true
 })
