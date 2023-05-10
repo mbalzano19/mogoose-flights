@@ -3,6 +3,7 @@
 ////////////////////////////////
 // import the movie model
 const Flight = require('../models/flight')
+const Ticket = require('../models/ticket')
 
 ////////////////////////////////////////////////////////////////
 // Define our controller functions

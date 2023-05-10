@@ -40,7 +40,11 @@ const flightSchema = new Schema({
             return oneYearFromNow;
           }
         },
-    destinations: [destinationSchema]
+    destinations: [destinationSchema],
+    flights: [{
+        type: Schema.Types.ObjectId,
+        ref: "Ticket"
+    }]
 }, {
     timestamps: true
 })
