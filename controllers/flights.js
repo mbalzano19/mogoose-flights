@@ -80,26 +80,27 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    //  we're going to use model method findById
-    // findById takes a mongoDb id and finds appropriate documents
-    console.log('these are reqquest parameters\n', req.params)
+    console.log('These are request parameters\n', req.params);
     Flight.findById(req.params.id)
+        .populate('tickets')
         .then(flight => {
-            console.log('this is the movie in how\n', flight)
-
-            // res.send(`found ${movie.title}`)
-            res.render('flights/show', {flight: flight})
+            console.log(flight)
+            console.log('hey there')
+            return Ticket.find({})
+                .then(tickets => {
+                    return { flight: flight, tickets: tickets }
+                })
+                .catch(error => console.error(error));
+        })
+        .then(data => {
+            res.render('flights/show', { flight: data.flight, tickets: data.tickets });
         })
         .catch(err => {
-            console.log('==========err')
-            console.log(err)
-            console.log('=============')
-
-            return res.send('err creating, check terminal')
-        })
-
-    // res.send(req.params.id)
+            console.log('Error:', err);
+            res.send('Error occurred. Please check the terminal for details.');
+        });
 }
+
 
 ////////////////////////////////
 // Export our modules

@@ -45,8 +45,12 @@
 <a href="/tickets/flights/<%= flight.id %>/new"method="GET">Add Ticket</a>
 
 <h2>Tickets</h2>
-
-
+<section>
+    <% flight.tickets.forEach(ticket => {%>
+    <%= ticket.seat%>
+    <%= ticket.price%>
+    <% }) %>
+ </section>
 
 
 <!-- <a href="/flights/<=%flight.id=>/tickets/new">Add Ticket</a> -->
