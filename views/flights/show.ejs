@@ -42,7 +42,13 @@
   <h5>No Destination Yet</h5>
 <% } %>
 
-<a href="/tickets/new">Add Ticket</a>
+<a href="/tickets/flights/<%= flight.id %>/new"method="GET">Add Ticket</a>
+
+<h2>Tickets</h2>
+
+
+
+
 <!-- <a href="/flights/<=%flight.id=>/tickets/new">Add Ticket</a> -->
 <!-- tried this but couldn't get it to work, used /tickets/new to get link to work, but it's not connected to ID -->
 

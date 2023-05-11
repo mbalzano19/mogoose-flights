@@ -23,8 +23,9 @@ function create(req, res) {
     Ticket.create(req.body)
         .then(ticket => {
             console.log('the new ticket', ticket)
+            
 
-            res.redirect('/tickets/new')
+            res.redirect('/flights')
         })
         // handle any errors if they occur
         .catch(err => {
@@ -43,7 +44,7 @@ function addTicket(req, res) {
     // redirect to the flight show page
     Flight.findById(req.params.flightId)
         .then(flightDoc => {
-            flightDoc.flights.push(req.body.ticketId)
+            flightDoc.tickets.push(req.body.ticketId)
 
             return flightDoc.save()
         })
