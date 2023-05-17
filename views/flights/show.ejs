@@ -46,11 +46,11 @@
 
 <h2>Tickets</h2>
 <section>
-    <% flight.tickets.forEach(ticket => {%>
-    <%= ticket.seat%>
-    <%= ticket.price%>
+    <% flight.tickets.forEach(function(ticket) { %>
+        <%= ticket.seat %>
+        <%= ticket.price %>
     <% }) %>
- </section>
+</section>
 
 
 <!-- <a href="/flights/<=%flight.id=>/tickets/new">Add Ticket</a> -->

@@ -20,12 +20,14 @@ function create(req, res) {
     console.log('req.body in ticket create \n', req.body)
     // we want to handle date formatting
     // then we send the req.body to a model method to create
+    
     Ticket.create(req.body)
         .then(ticket => {
+
             console.log('the new ticket', ticket)
             
 
-            res.redirect(`/flights/${req.params.flightId}`)
+            res.redirect(`/flights/${req.params.id}`)
         })
         // handle any errors if they occur
         .catch(err => {
@@ -43,7 +45,9 @@ function addTicket(req, res) {
     // save the flight doc
     // redirect to the flight show page
     Flight.findById(req.params.flightId)
+        .exec()
         .then(flightDoc => {
+
             flightDoc.tickets.push(req.body.ticketId)
 
             return flightDoc.save()
